@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Widget.Calc.Button" parent="Widget.MaterialComponents.Button">
-        <item name="android:textSize">13dp</item>
+        <item name="autoSizeTextType">uniform</item>
         <item name="android:layout_width">60dp</item>
         <item name="android:layout_height">34dp</item>
         <item name="android:background">@drawable/button_states</item>
+        <item name="android:layout_margin">5dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    <style name="Widget.Calc.GreenButton" parent="Widget.MaterialComponents.Button">
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">34dp</item>
+        <item name="android:background">@drawable/green_button_states</item>
         <item name="android:layout_margin">5dp</item>
         <item name="android:stateListAnimator">@null</item>
     </style>
