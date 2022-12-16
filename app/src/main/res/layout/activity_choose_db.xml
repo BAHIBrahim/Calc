@@ -29,6 +29,7 @@
             android:inputType="text"
             android:textCursorDrawable="@drawable/color_cursor_db_name"
             android:textColor="?attr/colorOnPrimary"
+            android:focusedByDefault="true"
             android:maxLines="1" />
 
     </com.google.android.material.textfield.TextInputLayout>

@@ -38,4 +38,34 @@ class ChooseDBActivity : AppCompatActivity() {
         intent = Intent(this, MemoActivity::class.java)
         startActivity(intent)
     }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(TAG, "this is on start")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.d(TAG, "this is on restart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "this is on resume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.d(TAG, "this is on pause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.d(TAG, "this is on stop")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "this is on destroy")
+    }
 }

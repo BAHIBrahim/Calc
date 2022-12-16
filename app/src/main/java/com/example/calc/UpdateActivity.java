@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.DialogInterface;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -31,6 +32,9 @@ public class UpdateActivity extends AppCompatActivity {
 
         //First we call this
         getAndSetIntentData();
+
+        //fix screen mode to portrait
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Set actionbar title after getAndSetIntentData method
         ActionBar ab = getSupportActionBar();
