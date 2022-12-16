@@ -9,6 +9,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import com.example.calc.databinding.ActivityChooseDbBinding
 
 private const val TAG = "ChooseDBActivity"
@@ -22,21 +23,25 @@ class ChooseDBActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChooseDbBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.login.setOnClickListener() { handleKeyEvent() }
-        binding.dbConnectionText.setText("Notes.db")
+        binding.login.setOnClickListener() { loginClicked() }
+        binding.dbConnectionText.doOnTextChanged { text, start, before, count -> binding.dbConnection.error ="" }
+        binding.dbConnectionText.setText("Notesdb")
 
     }
 
 
-    //method to handle onSubmit event; enter button clicked event
-    private fun handleKeyEvent() {
-        Log.d(TAG, KeyEvent.KEYCODE_ENTER.toString() + "hey")
-
+    private fun loginClicked() {
         //return the given value
         //MyDatabaseHelper.DATABASE_NAME = "[" + binding.dbConnectionText.text + "]"
         //Log.d(TAG, "your db name: " + MyDatabaseHelper.DATABASE_NAME)
-        intent = Intent(this, MemoActivity::class.java)
-        startActivity(intent)
+        //checking if the given name doesn't start with a number, if it does we won't take it and instead we trigger an error.
+        if((('A'..'z').minus(('['..'`')).plus('_')).contains((binding.dbConnectionText.text?:"9").first())) {
+            intent = Intent(this, MemoActivity::class.java)
+            startActivity(intent)
+        } else {
+            binding.dbConnection.error = "numbers are not allowed initials"
+        }
+
     }
 
     override fun onStart() {

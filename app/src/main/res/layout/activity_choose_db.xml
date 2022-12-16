@@ -19,13 +19,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:boxStrokeColor="?attr/colorSecondary"
         app:boxStrokeWidth="2dp"
+        app:errorEnabled="true"
+        app:errorTextColor="@color/red"
+        app:boxStrokeErrorColor="@color/red"
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/db_connection_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_"
             android:inputType="text"
             android:textCursorDrawable="@drawable/color_cursor_db_name"
             android:textColor="?attr/colorOnPrimary"

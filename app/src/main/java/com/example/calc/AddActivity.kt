@@ -45,6 +45,7 @@ class AddActivity : AppCompatActivity() {
     override fun onStop() {
         super.onStop()
         Log.d(TAG, "this is on stop")
+        finish()
     }
 
     override fun onDestroy() {
