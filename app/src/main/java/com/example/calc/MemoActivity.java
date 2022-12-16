@@ -20,10 +20,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.calc.MainActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+
+import com.example.calc.databinding.ActivityMemoBinding;
 
 public class MemoActivity extends AppCompatActivity {
     RecyclerView recyclerView;
@@ -32,6 +33,8 @@ public class MemoActivity extends AppCompatActivity {
     ArrayList<String> note_id, note_titre, note;
     CustomAdapter customAdapter;
 
+    ActivityMemoBinding binding;
+
     ImageView empty_imageview;
     TextView no_data;
 
@@ -39,7 +42,8 @@ public class MemoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMemoBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
         recyclerView = findViewById(R.id.recyclerView);
         add_button = findViewById(R.id.add_button);
@@ -48,21 +52,21 @@ public class MemoActivity extends AppCompatActivity {
         add_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddActivity.class);
+                Intent intent = new Intent(MemoActivity.this, AddActivity.class);
                 startActivity(intent);
             }
         });
 
 
-        myDB = new MyDatabaseHelper(MainActivity.this);
+        myDB = new MyDatabaseHelper(MemoActivity.this);
         note_id = new ArrayList<>();
         note_titre = new ArrayList<>();
         note = new ArrayList<>();
 
         storeDataInArrays();
-        customAdapter = new CustomAdapter(MainActivity.this,this, note_id, note_titre, note);
+        customAdapter = new CustomAdapter(MemoActivity.this,this, note_id, note_titre, note);
         recyclerView.setAdapter(customAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(MemoActivity.this));
     }
 
     @Override
@@ -119,10 +123,10 @@ public class MemoActivity extends AppCompatActivity {
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                MyDatabaseHelper myDB = new MyDatabaseHelper(MainActivity.this);
+                MyDatabaseHelper myDB = new MyDatabaseHelper(MemoActivity.this);
                 myDB.deleteAllData();
                 //Refresh Activity
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                Intent intent = new Intent(MemoActivity.this, MemoActivity.class);
                 startActivity(intent);
                 finish();
             }

@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.calc.databinding.ActivityMainBinding
 
 private const val TAG = "MainActivity"
-private const val PASSWORD = "101010"
+private const val PASSWORD = "18"
 
 class MainActivity : AppCompatActivity() {
 

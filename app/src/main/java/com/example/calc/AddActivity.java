@@ -1,4 +1,4 @@
-package com.example.save;
+package com.example.calc;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,33 +8,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.calc.databinding.ActivityAddBinding;
+
 public class AddActivity extends AppCompatActivity {
 
-    EditText titre_input, note_input;
-    Button add_button;
+    ActivityAddBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add);
-        titre_input = findViewById(R.id.titre_input);
-        note_input = findViewById(R.id.note_input);
-        add_button = findViewById(R.id.add_button);
-        add_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(titre_input.getText().toString().trim() == "" || note_input.getText().toString().trim() == "") {
-                    MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this);
-                    myDB.addNote(titre_input.getText().toString().trim(),
-                            note_input.getText().toString().trim()
-                    );
-                } else {
-                    //do nothing ofc
-                }
-
-                AddActivity.super.onBackPressed();
-            }
-        });
+        binding = ActivityAddBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
     }
 
     @Override
@@ -42,5 +26,19 @@ public class AddActivity extends AppCompatActivity {
         super.onRestart();
         //we need to override every activity onRestart method, so that it will return to the main activity: a security measure
         Log.d("MyAc", "onRestart");
+    }
+
+    public void onClickAdd() {
+        Log.d("nothing", "values: " + binding.contentText.toString());
+        if(binding.titleText.getText().toString() == "" || binding.contentText.getText().toString() == "") {
+            MyDatabaseHelper myDB = new MyDatabaseHelper(AddActivity.this);
+            myDB.addNote(binding.titleText.getText().toString().trim(),
+                    binding.contentText.getText().toString().trim()
+            );
+        } else {
+            Log.d("nothing", "nothing");
+        }
+
+        //AddActivity.super.onBackPressed();
     }
 }

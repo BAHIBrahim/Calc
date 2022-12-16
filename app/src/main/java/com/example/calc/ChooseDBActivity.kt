@@ -1,7 +1,9 @@
 package com.example.calc
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
 import android.util.Log
 import android.view.KeyEvent
 import android.view.View
@@ -12,7 +14,7 @@ import com.example.calc.databinding.ActivityChooseDbBinding
 private const val TAG = "ChooseDBActivity"
 
 
-class ChooseDBActivity: AppCompatActivity() {
+class ChooseDBActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityChooseDbBinding
 
@@ -20,29 +22,20 @@ class ChooseDBActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityChooseDbBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.dbConnectionText.setOnKeyListener { view, keyCode, _ ->
-            handleKeyEvent(
-                view,
-                keyCode
-            )
-        }
+        binding.login.setOnClickListener() { handleKeyEvent() }
+        binding.dbConnectionText.setText("Notes.db")
 
     }
 
 
     //method to handle onSubmit event; enter button clicked event
-    private fun handleKeyEvent(view: View, keyCode: Int): Boolean {
-        if (keyCode == KeyEvent.KEYCODE_ENTER) {
+    private fun handleKeyEvent() {
+        Log.d(TAG, KeyEvent.KEYCODE_ENTER.toString() + "hey")
 
-            //Hide the virtual keyboard; soft keyboard
-            val inputMethodManager =
-                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
-            inputMethodManager.hideSoftInputFromWindow(view.windowToken, 0)
-
-            //return the given value
-            Log.d(TAG, "your db name: [" + binding.dbConnectionText.text + "]")
-            return true
-        }
-        return false
+        //return the given value
+        //MyDatabaseHelper.DATABASE_NAME = "[" + binding.dbConnectionText.text + "]"
+        //Log.d(TAG, "your db name: " + MyDatabaseHelper.DATABASE_NAME)
+        intent = Intent(this, MemoActivity::class.java)
+        startActivity(intent)
     }
 }

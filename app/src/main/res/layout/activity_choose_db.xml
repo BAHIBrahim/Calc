@@ -33,5 +33,19 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+    <ImageButton
+        android:id="@+id/login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_login"
+        android:clickable="true"
+        android:background="@null"
+        android:layout_marginLeft="20dp"
+        android:importantForAccessibility="yes"
+        app:layout_constraintStart_toEndOf="@id/db_connection"
+        app:layout_constraintTop_toTopOf="@id/db_connection"
+        app:layout_constraintBottom_toBottomOf="@id/db_connection"
+        />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
