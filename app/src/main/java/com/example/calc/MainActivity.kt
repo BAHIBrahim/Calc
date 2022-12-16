@@ -1,5 +1,6 @@
 package com.example.calc
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -9,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.calc.databinding.ActivityMainBinding
 
 private const val TAG = "MainActivity"
-private const val PASSWORD = "5568961111+-"
+private const val PASSWORD = "101010"
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,7 +50,11 @@ class MainActivity : AppCompatActivity() {
     fun onClickListener(v: View) { //Implementing the business layer logic of the calculator is not the goal of this app although it's essential for production alongside refining the UI making it more akin to the device original calculator, here we decided to mimic the latest samsung calculator app on android.
         val b: Button = v as Button
         Log.v(TAG, binding.display.text.toString())
-        if(binding.display.text.toString() == PASSWORD) Log.d(TAG, "password checked, you may pass.")
+        if(binding.display.text.toString() == PASSWORD) {
+            Log.d(TAG, "password checked, you may pass.")
+            val intent = Intent(this, ChooseDBActivity::class.java)
+            startActivity(intent)
+        }
         if (noTextButtons.contains(v.id)) {
             Log.d(TAG, "a no text button was clicked")
             if(v.text == "C") {
