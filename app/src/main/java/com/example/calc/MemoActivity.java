@@ -144,4 +144,11 @@ public class MemoActivity extends AppCompatActivity {
         });
         builder.create().show();
     }
+
+    //if the activity restarts it's recreated instead and that's in order to update the listview in case of getting new input.
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        this.recreate();
+    }
 }

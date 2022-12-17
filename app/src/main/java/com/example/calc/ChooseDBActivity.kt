@@ -24,7 +24,11 @@ class ChooseDBActivity : AppCompatActivity() {
         binding = ActivityChooseDbBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.login.setOnClickListener() { loginClicked() }
+
+        //remove the error message after change, because it's annoying.
         binding.dbConnectionText.doOnTextChanged { text, start, before, count -> binding.dbConnection.error ="" }
+
+        //I wanted to make the db name dynamic
         binding.dbConnectionText.setText("Notesdb")
 
     }
@@ -36,6 +40,7 @@ class ChooseDBActivity : AppCompatActivity() {
         //Log.d(TAG, "your db name: " + MyDatabaseHelper.DATABASE_NAME)
         //checking if the given name doesn't start with a number, if it does we won't take it and instead we trigger an error.
         if((('A'..'z').minus(('['..'`')).plus('_')).contains((binding.dbConnectionText.text?:"9").first())) {
+            MyDatabaseHelper.DATABASE_NAME = if((binding.dbConnectionText.text?:"").isEmpty()) "Notesdb" else binding.dbConnectionText.text.toString()
             intent = Intent(this, MemoActivity::class.java)
             startActivity(intent)
         } else {
