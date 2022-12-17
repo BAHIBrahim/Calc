@@ -4,56 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AddActivity"
-    android:padding="30dp">
+    android:padding="30dp"
+    tools:context=".UpdateActivity">
 
-    <EditText
-        android:id="@+id/titre_input2"
+    <TextView
+        android:id="@+id/label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:ems="10"
-        android:hint="Note Title"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginBottom="20dp"
+        android:text="Your Memo"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/title_input"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/note_input2"
-        android:layout_width="match_parent"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/title_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Note"
-        android:inputType="text"
+        android:hint="Title"
+        android:textColorHint="?attr/colorSecondary"
+        app:boxStrokeColor="?attr/colorSecondary"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="?attr/colorOnPrimary"
+        app:layout_constraintBottom_toTopOf="@id/content_input"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titre_input2" />
+        app:layout_constraintTop_toBottomOf="@id/label">
 
-    <Button
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/title_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890. ,()[]{}$%@!#*-+/_~|\/:;"
+            android:inputType="text"
+            android:maxLines="1"
+            android:textColor="?attr/colorOnPrimary"
+            android:textCursorDrawable="@drawable/color_cursor_db_name" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/content_input"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:hint="Content"
+        android:textColorHint="?attr/colorSecondary"
+        app:boxStrokeColor="?attr/colorSecondary"
+        app:boxStrokeWidth="2dp"
+        app:hintTextColor="?attr/colorOnPrimary"
+        app:layout_constraintBottom_toTopOf="@id/update_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_input">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/content_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890. ,()[]{}$%@!#*-+/_~|\/:;"
+            android:gravity="top"
+            android:inputType="text"
+            android:lines="100"
+            android:maxLines="1"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false"
+            android:textColor="?attr/colorOnPrimary"
+            android:textCursorDrawable="@drawable/color_cursor_db_name" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/update_button"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="40dp"
-        android:text="Update"
-        android:textSize="20sp"
-        android:textAllCaps="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/note_input2" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="?attr/colorSecondary"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/content_input"
+        app:layout_constraintTop_toBottomOf="@id/content_input"
+        app:srcCompat="@drawable/ic_update"
+        app:tint="@color/white" />
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/delete_button"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="16dp"
-        android:text="Delete"
-        android:textAllCaps="false"
-        android:textColor="#000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_button" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:backgroundTint="?attr/colorSecondaryVariant"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="@id/update_button"
+        app:layout_constraintTop_toTopOf="@id/update_button"
+        app:layout_constraintEnd_toStartOf="@id/update_button"
+        app:srcCompat="@drawable/ic_delete"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -59,7 +59,6 @@ public class MemoActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(MemoActivity.this, AddActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
 

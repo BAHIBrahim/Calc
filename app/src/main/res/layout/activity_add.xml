@@ -7,20 +7,31 @@
     android:padding="30dp"
     tools:context=".AddActivity">
 
+    <TextView
+        android:id="@+id/label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="Your Memo"
+        android:textColor="?attr/colorOnPrimary"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/title_input"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/title_input"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Title"
-        android:textColorHint="?attr/colorOnPrimary"
-        app:hintTextColor="?attr/colorOnPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textColorHint="?attr/colorSecondary"
         app:boxStrokeColor="?attr/colorSecondary"
         app:boxStrokeWidth="2dp"
-        app:layout_constraintTop_toTopOf="parent">
+        app:hintTextColor="?attr/colorOnPrimary"
+        app:layout_constraintBottom_toTopOf="@id/content_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/title_text"
@@ -28,9 +39,9 @@
             android:layout_height="wrap_content"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890. ,()[]{}$%@!#*-+/_~|\/:;"
             android:inputType="text"
-            android:textCursorDrawable="@drawable/color_cursor_db_name"
+            android:maxLines="1"
             android:textColor="?attr/colorOnPrimary"
-            android:maxLines="1" />
+            android:textCursorDrawable="@drawable/color_cursor_db_name" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -38,40 +49,51 @@
         android:id="@+id/content_input"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="Title"
-        android:textColorHint="?attr/colorOnPrimary"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:hint="Content"
+        android:textColorHint="?attr/colorSecondary"
+        app:boxStrokeColor="?attr/colorSecondary"
+        app:boxStrokeWidth="2dp"
         app:hintTextColor="?attr/colorOnPrimary"
+        app:layout_constraintBottom_toTopOf="@id/add_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title_input"
-        android:layout_marginTop="20dp"
-        app:boxStrokeColor="?attr/colorSecondary"
-        app:boxStrokeWidth="2dp">
+        app:layout_constraintTop_toBottomOf="@id/title_input">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/content_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:digits="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890. ,()[]{}$%@!#*-+/_~|\/:;"
+            android:gravity="top"
             android:inputType="text"
-            android:textCursorDrawable="@drawable/color_cursor_db_name"
+            android:lines="100"
+            android:maxLines="1"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:scrollHorizontally="false"
             android:textColor="?attr/colorOnPrimary"
-            android:maxLines="1" />
+            android:textCursorDrawable="@drawable/color_cursor_db_name" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/add_button"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="40dp"
-        android:text="Add"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/content_input"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="?attr/colorSecondary"
+        android:clickable="true"
+        android:focusable="true"
+        android:scaleType="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/content_input"
+        app:layout_constraintTop_toBottomOf="@id/content_input"
+        app:srcCompat="@drawable/ic_add"
+        app:tint="@color/white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

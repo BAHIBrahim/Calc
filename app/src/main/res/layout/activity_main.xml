@@ -28,6 +28,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="20dp"
             android:text="18"
+            android:focusedByDefault="false"
             android:background="@null"
             android:gravity="end"
             android:textColor="?attr/colorOnBackground"
