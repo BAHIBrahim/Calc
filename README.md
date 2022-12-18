@@ -70,6 +70,8 @@ Neither of us—me nor my collaborator—is a design expert, so we decided to mi
       - [first palette](#first-palette)
       - [second palette](#second-palette)
   - [Tests](#tests)
+  - [License](#license)
+  - [Credits 2022](#credits-2022)
 
 ****
 
@@ -166,6 +168,13 @@ We used a lot of drawables—15 to be exact. Each of them serves a different pur
 
 We hadn't done any instrumental tests, nor unit tests because we deemed them useless for such a small application; hence, everything was done manually.
 
+****
+## License
 
+Apache License 2.0
 
+****
+## Credits 2022
 
+* [Bahi Brahim](https://github.com/BAHIBrahim)
+* [Nour eddine Alouaye](https://github.com/nour-eddine-alouay)
