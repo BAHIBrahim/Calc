@@ -83,8 +83,7 @@ There are five interfaces in total. The main interface, which is ActivityMain, h
 
 ### Main Activity 
 #### the calculator: portrait
-By the way, I forgot to mention that the calculator doesn't work yet. I implemented the logic, but it was buggy, so I got rid of it for the moment. It will be added later after a thorough correction.
-
+By the way, I forgot to mention that the calculator doesn't work yet. I implemented the logic, but it was buggy, so I got rid of it for the moment. It will be added later after a thorough correction. The default password is 18, and you can proceed by clicking any of the buttons.
 ![MainActivityPortrait](MainActivityPortraitLightMode.png)
 
 #### the calculator: landscape
